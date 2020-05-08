@@ -7,7 +7,7 @@ namespace test {
 	{
 		EXPECT_FALSE(db_);
 		// \" should be both illegal as a file name on windows and linux.
-		EXPECT_THROW(db_ = sql::CreateSQLiteDB("\""), std::runtime_error);
+		EXPECT_THROW(db_ = sql::CreateSQLiteDB("*"), std::runtime_error);
 		EXPECT_FALSE(db_);
 		EXPECT_NO_THROW(db_ = sql::CreateSQLiteDB("./test.db"));
 		EXPECT_TRUE(db_);
@@ -50,15 +50,10 @@ namespace test {
 		ASSERT_TRUE(db_->ExecuteString(R"SQL(DROP TABLE IF EXISTS test;)SQL"));
 		// Execute create table test.
 		ASSERT_TRUE(db_->ExecuteString(R"SQL(
-			-- Create a new table test that include name and age of people.
 			CREATE TABLE test (
-				-- Created a primary key as an int autoincrement ascendant.
 				id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
-				-- Name is a varchar.
 				name VARCHAR(20),
-				-- Family name is also a varchar.
 				family VARCHAR(20),
-				-- Age is an integer.
 				age INTEGER DEFAULT 0
 			);
 		)SQL"));
@@ -89,15 +84,10 @@ namespace test {
 		ASSERT_TRUE(db_->ExecuteString(R"SQL(DROP TABLE IF EXISTS test;)SQL"));
 		// Execute create table test.
 		ASSERT_TRUE(db_->ExecuteString(R"SQL(
-			-- Create a new table test that include name and age of people.
 			CREATE TABLE test (
-				-- Created a primary key as an int autoincrement ascendant.
 				id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
-				-- Name is a varchar.
 				name VARCHAR(20),
-				-- Family name is also a varchar.
 				family VARCHAR(20),
-				-- Age is an integer.
 				age INTEGER DEFAULT 0
 			);
 		)SQL"));

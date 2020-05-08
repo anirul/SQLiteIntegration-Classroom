@@ -8,10 +8,10 @@
 namespace sql {
 
 	using value_t = std::variant<
+		std::nullptr_t,
 		std::int64_t, 
 		double, 
-		std::string, 
-		std::nullptr_t>;
+		std::string>;
 	using name_value_t = std::pair<std::string, value_t>;
 	using column_t = std::vector<name_value_t>;
 	using table_t = std::vector<column_t>;

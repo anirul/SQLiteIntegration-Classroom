@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 17)
 enable_testing()
 
 find_package(sqlite3 CONFIG REQUIRED)
-find_package(Gtest CONFIG REQUIRED)
+find_package(GTest CONFIG REQUIRED)
 
 add_library(SQLib
 	${CMAKE_CURRENT_SOURCE_DIR}/SQLib/SQLib.h
@@ -32,9 +32,6 @@ add_executable(SQLibTest
 target_link_libraries(SQLibTest
   PRIVATE
 	GTest::gtest
-	GTest::gtest_main
-	GTest::gmock
-	GTest::gmock_main
 	SQLib
 	sqlite3
 )
